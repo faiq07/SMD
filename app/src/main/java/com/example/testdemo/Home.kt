@@ -1,8 +1,10 @@
 package com.example.testdemo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,18 @@ class Home: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainhome)
         val toolbar1=findViewById<MaterialToolbar>(R.id.toolbar)
+       // var bundle: Bundle? =getIntent().getExtras();
+        var nam:String="Not found"
+        /*if(bundle!=null)
+        {
+            nam=bundle.getString("nam").toString()
+            val phon:String= bundle.getString("phon").toString()
+            val mail:String= bundle.getString("mail").toString()
+        }*/
+
+        //Toast.makeText(baseContext, phon,Toast.LENGTH_SHORT).show()
+        var nameView=findViewById<TextView>(R.id.name13)
+        nameView.text=nam
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         //getSupportActionBar()?.hide();
         //setSupportActionBar(toolbar1);

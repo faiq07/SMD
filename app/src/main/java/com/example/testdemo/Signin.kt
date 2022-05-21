@@ -1,6 +1,7 @@
 package com.example.testdemo
 
 import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 
 class Signin : AppCompatActivity() {
+    val cont: Context = this
     var a=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +53,14 @@ class Signin : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
                         val nameFromDB:String=snapshot.child(emailstr).child("name").getValue().toString()
-                        Toast.makeText(baseContext, nameFromDB,Toast.LENGTH_SHORT).show()
+                        val phoneFromDB:String=snapshot.child(emailstr).child("phone").getValue().toString()
+                        val emailFromDB:String=snapshot.child(emailstr).child("email").getValue().toString()
+                        val intnt=Intent(cont,Home::class.java)
+                        intnt.putExtra("nam",nameFromDB)
+                        intnt.putExtra("phon", phoneFromDB)
+                        intnt.putExtra("mail",emailFromDB)
+                        startActivity(intnt)
+                        //Toast.makeText(baseContext, nameFromDB,Toast.LENGTH_SHORT).show()
 
 
                     }
